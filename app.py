@@ -962,7 +962,7 @@ WHERE SQ1a = 1 OR SQ1a = 13;""",
 st.markdown(
     """
     <div style="
-        background-color: #fef7e0; 
+        background-color: #f8f9fa; 
         padding: 22px 26px; 
         border-radius: 0.5rem; 
         margin-top: 15px;
