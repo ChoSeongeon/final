@@ -835,6 +835,9 @@ for i, (idx, row) in enumerate(df_beauty_sorted.iterrows()):
 # 4. 레이아웃 생성 및 시각화 출력
 col1, col2 = st.columns(2)
 
+# 4. 레이아웃 생성 및 시각화 출력
+col1, col2 = st.columns(2)
+
 with col1:
     fig1 = px.pie(
         df_fashion_melted, 
@@ -848,7 +851,9 @@ with col1:
     fig1.update_traces(
         textposition='outside', 
         textinfo='percent+label',
-        textfont_size=13
+        textfont_size=13,
+        # ✨ 핵심: 조각 사이에 두께 1.5짜리 흰색(#ffffff) 테두리 선을 넣어 구분감을 줍니다!
+        marker=dict(line=dict(color='#ffffff', width=1.5))
     )
     fig1.update_layout(
         title_font_size=18, 
@@ -870,7 +875,9 @@ with col2:
     fig2.update_traces(
         textposition='outside', 
         textinfo='percent+label',
-        textfont_size=13
+        textfont_size=13,
+        # ✨ 핵심: 조각 사이에 두께 1.5짜리 흰색(#ffffff) 테두리 선을 넣어 구분감을 줍니다!
+        marker=dict(line=dict(color='#ffffff', width=1.5))
     )
     fig2.update_layout(
         title_font_size=18, 
@@ -878,7 +885,6 @@ with col2:
         margin=dict(t=50, b=50, l=40, r=40)
     )
     st.plotly_chart(fig2, use_container_width=True)
-
 
 # 5. 안내 및 인사이트 박스 레이아웃
 st.markdown(
