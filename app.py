@@ -824,7 +824,7 @@ with col1:
 with col2:
     fig2 = px.pie(
         df_beauty_melted, 
-        values='빈0수', # DB 데이터 매핑용 필드
+        values='빈도수', # DB 데이터 매핑용 필드
         names='접근경로', 
         title='💄 한국 뷰티 콘텐츠 유입 경로',
         hole=0.3
