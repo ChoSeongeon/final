@@ -831,8 +831,6 @@ with col2:
     )
     fig2.update_traces(textposition='inside', textinfo='percent+label')
     fig2.update_layout(title_font_size=18, showlegend=False)
-    # 기존 코드 내부 변수 매핑 오류 우려 수정
-    fig2.update_arcs(data_frame=df_beauty_melted, values='빈도수') 
     st.plotly_chart(fig2, use_container_width=True)
 
 # --- 정보 가이드 및 해석 결과 섹션 (기존 디자인 스타일 유지) ---
