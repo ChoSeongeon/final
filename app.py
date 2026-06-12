@@ -971,8 +971,7 @@ st.markdown(
     ">
         <span style="font-weight: bold; font-size: 1.3em; color: #333333;">📌 참고</span><br>
         <div style="color: #212529; line-height: 2.0; font-size: 16px; margin-top: 8px;">
-            • 본 분석에 활용된 데이터는 해외 거주자 중 한국 한류 콘텐츠 이용자를 필터링한 <b>'해외한류'</b> 테이블의 원시자료입니다.<br>
-            • 문항 응답 코드 중 거주국가 식별자 <b>SQ1a 변수의 값이 1 또는 13</b>에 해당하는 특정 주요 전략 권역군을 집계 대상으로 가공하였습니다.
+            • 본 분석은 KOSSDA 2024년 외국인한류실태조사 데이터를 활용하였습니다.
         </div>
     </div>
     """,
