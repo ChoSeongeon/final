@@ -969,7 +969,7 @@ st.markdown(
         margin-bottom: 15px;
         border: none;
     ">
-        <span style="font-weight: bold; font-size: 1.3em; color: #b06000;">💡 참고 사항</span><br>
+        <span style="font-weight: bold; font-size: 1.3em; color: #333333;">📌 참고</span><br>
         <div style="color: #212529; line-height: 2.0; font-size: 16px; margin-top: 8px;">
             • 본 분석에 활용된 데이터는 해외 거주자 중 한국 한류 콘텐츠 이용자를 필터링한 <b>'해외한류'</b> 테이블의 원시자료입니다.<br>
             • 문항 응답 코드 중 거주국가 식별자 <b>SQ1a 변수의 값이 1 또는 13</b>에 해당하는 특정 주요 전략 권역군을 집계 대상으로 가공하였습니다.
@@ -989,7 +989,7 @@ st.markdown(
         margin-bottom: 15px;
         border: none;
     ">
-        <span style="font-weight: bold; font-size: 1.3em; color: #1e4620;">📊 분석 결과</span><br>
+        <span style="font-weight: bold; font-size: 1.3em; color: #1e4620;">📊 결과</span><br>
         <div style="color: #212529; line-height: 2.0; font-size: 16px; margin-top: 8px;">
             • <b>유튜브 및 글로벌 SNS의 압도적 비중:</b> 패션(IQ2)과 뷰티(JQ2) 분야 모두 유입 경로 중 '기타' 영역을 제외하면 소셜네트워크서비스와 유튜브 플랫폼을 통한 콘텐츠 전파 비중이 절반 이상을 점유하고 있습니다.<br>
             • <b>미디어 연계 효과 유지:</b> 전통적인 드라마, 예능, 영화 등 대중문화 영상 미디어를 통해 자연스럽게 스타일링을 접하게 되는 간접 유입 또한 꾸준히 유의미한 비율을 기록했습니다.
@@ -1009,7 +1009,7 @@ st.markdown(
         margin-bottom: 15px;
         border: none;
     ">
-        <span style="font-weight: bold; font-size: 1.3em; color: #1a73e8;">🚀 최종 인사이트 및 제언</span><br>
+        <span style="font-weight: bold; font-size: 1.3em; color: #1a73e8;">💡 인사이트</span><br>
         <div style="color: #212529; line-height: 2.0; font-size: 16px; margin-top: 8px;">
             • 강원도 관광 및 문화 마케팅 전략 수립 시, 지면 광고나 단순 쇼·전시회 개최보다는 <b>글로벌 인플루언서 협업 콘텐츠 생성(SNS/유튜브)</b>에 예산을 집중하는 것이 타겟 소비층 전환에 훨씬 효율적입니다.<br>
             • 특히 영상 콘텐츠 내에 강원도만의 K-뷰티 스팟이나 패션 경험 요소를 자연스럽게 브랜딩(PPL 및 브랜디드 콘텐츠)하는 디지털 마케팅 로드맵 확보가 선행되어야 합니다.
