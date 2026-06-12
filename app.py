@@ -927,40 +927,34 @@ with col2:
     )
     st.plotly_chart(fig2, use_container_width=True)
     
-# 5. 안내 및 인사이트 박스 레이아웃 (디자인 및 SQL 하이라이팅 완벽 일치 버전)
+# 5. 안내 및 인사이트 박스 레이아웃 (5번 섹션과 디자인 및 실제 SQL 내용 완전 일치)
 with st.expander("🔍 사용한 SQL 쿼리 보기"):
     st.markdown(
-        """
+        f"""
         <div style="
-            color: #212529; 
-            font-size: 16px; 
-            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; 
-            line-height: 2.0;
-            padding: 10px 15px;
+            background-color: #f8f9fa; 
+            padding: 15px 20px; 
+            border-radius: 0.3rem; 
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
         ">
-            <span style="color: #008000; font-weight: bold;">-- 패션 콘텐츠 경로 조회 전체 쿼리</span><br>
-            <span style="color: #0000ff; font-weight: bold;">SELECT</span> <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_1 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"소셜네트워크서비스"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_2 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"드라마, 예능, 영화"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_3 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"자국 패션 쇼, 전시회"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_4 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"유튜브"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_5 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"온/오프라인 판매처"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_6 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"책, 잡지,기사"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_7 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"기타"</span> <br>
-            <span style="color: #0000ff; font-weight: bold;">FROM</span> <span style="color: #a31515;">"해외한류"</span> <br>
-            <span style="color: #0000ff; font-weight: bold;">WHERE</span> SQ1a = 1 <span style="color: #0000ff; font-weight: bold;">OR</span> SQ1a = 13;<br><br><br>
-
-            <span style="color: #008000; font-weight: bold;">-- 뷰티 콘텐츠 경로 조회 전체 쿼리</span><br>
-            <span style="color: #0000ff; font-weight: bold;">SELECT</span> <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_1 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"소셜네트워크서비스"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_2 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"드라마, 예능, 영화"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_3 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"자국 뷰티 쇼, 전시회"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_4 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"유튜브"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_5 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"온/오프라인 판매처"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_6 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"책, 잡지,기사"</span>,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_7 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"기타"</span> <br>
-            <span style="color: #0000ff; font-weight: bold;">FROM</span> <span style="color: #a31515;">"해외한류"</span> <br>
-            <span style="color: #0000ff; font-weight: bold;">WHERE</span> SQ1a = 1 <span style="color: #0000ff; font-weight: bold;">OR</span> SQ1a = 13;
+            <span style="font-weight: bold; font-size: 1.0em; color: #343a40;">👚 패션 콘텐츠 경로 조회 전체 쿼리</span><br>
+            <div style="color: #495057; font-size: 14px; margin-top: 8px; font-family: monospace; white-space: pre-wrap;">
+{query_fashion.strip()}
+            </div>
+        </div>
+        
+        <div style="
+            background-color: #f8f9fa; 
+            padding: 15px 20px; 
+            border-radius: 0.3rem; 
+            margin-bottom: 10px;
+            border: 1px solid #e9ecef;
+        ">
+            <span style="font-weight: bold; font-size: 1.0em; color: #343a40;">💄 뷰티 콘텐츠 경로 조회 전체 쿼리</span><br>
+            <div style="color: #495057; font-size: 14px; margin-top: 8px; font-family: monospace; white-space: pre-wrap;">
+{query_beauty.strip()}
+            </div>
         </div>
         """,
         unsafe_allow_html=True
