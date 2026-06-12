@@ -7,11 +7,8 @@ import plotly.express as px
 # 1. 페이지 설정 및 데이터베이스 연결 체크
 st.set_page_config(page_title="강원도 외국인 관광 인사이트", layout="wide")
 
-DB_PATH = "강릉.db"
-import os
-st.write("--- 🔍 현재 폴더 안의 실제 파일 목록 ---")
-st.code(os.listdir("."))
-st.write("--------------------------------------")
+DB_PATH = "final.db"
+
 def get_connection():
     return sqlite3.connect(DB_PATH)
 
