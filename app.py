@@ -815,24 +815,45 @@ with col1:
         values='빈도수', 
         names='접근경로', 
         title='👚 한국 패션 콘텐츠 유입 경로',
-        hole=0.3 # 세련된 도넛 형태로 표현
+        hole=0.3,
+        color_discrete_sequence=px.colors.qualitative.Pastel # ✨ 은은한 파스텔톤 컬러셋 적용
     )
-    fig1.update_traces(textposition='inside', textinfo='percent+label')
-    fig1.update_layout(title_font_size=18, showlegend=False)
+    # ✨ 글씨를 원 밖으로(outside) 빼고, 레이블과 퍼센트를 깔끔하게 표시합니다.
+    fig1.update_traces(
+        textposition='outside', 
+        textinfo='percent+label',
+        textfont_size=13
+    )
+    # ✨ 그래프가 커지면서 글씨가 잘리지 않도록 여백(margin)을 확보하고 범례(Legend)는 숨깁니다.
+    fig1.update_layout(
+        title_font_size=18, 
+        showlegend=False,
+        margin=dict(t=50, b=50, l=40, r=40) 
+    )
     st.plotly_chart(fig1, use_container_width=True)
 
 with col2:
     fig2 = px.pie(
         df_beauty_melted, 
-        values='빈도수', # DB 데이터 매핑용 필드
+        values='빈도수', 
         names='접근경로', 
         title='💄 한국 뷰티 콘텐츠 유입 경로',
-        hole=0.3
+        hole=0.3,
+        color_discrete_sequence=px.colors.qualitative.Pastel # ✨ 은은한 파스텔톤 컬러셋 적용
     )
-    fig2.update_traces(textposition='inside', textinfo='percent+label')
-    fig2.update_layout(title_font_size=18, showlegend=False)
+    # ✨ 글씨를 원 밖으로(outside) 빼고, 레이블과 퍼센트를 깔끔하게 표시합니다.
+    fig2.update_traces(
+        textposition='outside', 
+        textinfo='percent+label',
+        textfont_size=13
+    )
+    # ✨ 그래프가 커지면서 글씨가 잘리지 않도록 여백(margin)을 확보하고 범례(Legend)는 숨깁니다.
+    fig2.update_layout(
+        title_font_size=18, 
+        showlegend=False,
+        margin=dict(t=50, b=50, l=40, r=40)
+    )
     st.plotly_chart(fig2, use_container_width=True)
-
 # --- 정보 가이드 및 해석 결과 섹션 (기존 디자인 스타일 유지) ---
 
 # 1. 사용한 SQL 안내 박스 (기존 회색/노란색 박스 디자인 응용)
