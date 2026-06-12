@@ -1008,7 +1008,7 @@ st.markdown(
         margin-bottom: 15px;
         border: none;
     ">
-        <span style="font-weight: bold; font-size: 1.3em; color: #1a73e8;">💡 인사이트</span><br>
+       <span style="color: #000000; font-weight: bold; font-size: 17.5px;">💡 인사이트</span><br>
         <div style="color: #212529; line-height: 2.0; font-size: 16px; margin-top: 8px;">
             • 미국인과 중국인은 한류 뷰티·패션 콘텐츠를 주로 유튜브를 통해 접하고 있어, 강원도 관광·축제 홍보 역시 유튜브를 중심으로 홍보를 추진할 필요가 있다.<br>
             • K-뷰티·K-패션 콘텐츠와 강원도 관광자원을 결합한 디지털 콘텐츠를 확대하여 해외 관광객의 관심을 실제 방문으로 연결하는 전략이 요구된다.
