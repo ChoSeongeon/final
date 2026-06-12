@@ -772,7 +772,7 @@ st.markdown('<hr style="border:1px solid #eeeeee; margin-top: 40px; margin-botto
 st.markdown('<h2 style="font-size: 26px; font-weight: bold; margin-bottom: 5px;">6. 외국인 뷰티/패션 접근 경로</h2>', unsafe_allow_html=True)
 st.markdown('<p style="font-size: 16px; color: #555555; margin-bottom: 25px;">해외 한류 실태조사를 통해 외국인의 한국 콘텐츠 유입 경로를 파악한다.</p>', unsafe_allow_html=True)
 
-# 데이터 쿼리 수행
+# 1. 데이터 쿼리 수행
 query_fashion = """
 SELECT 
     SUM(CASE WHEN IQ2_1 = 0 THEN 1 ELSE 0 END) AS "소셜네트워크서비스",
@@ -782,7 +782,7 @@ SELECT
     SUM(CASE WHEN IQ2_5 = 0 THEN 1 ELSE 0 END) AS "온/오프라인 판매처",
     SUM(CASE WHEN IQ2_6 = 0 THEN 1 ELSE 0 END) AS "책, 잡지,기사",
     SUM(CASE WHEN IQ2_7 = 0 THEN 1 ELSE 0 END) AS "기타"
-FROM 해외한류
+FROM "해외한류"
 WHERE SQ1a = 1 OR SQ1a = 13;
 """
 
@@ -795,18 +795,44 @@ SELECT
     SUM(CASE WHEN JQ2_5 = 0 THEN 1 ELSE 0 END) AS "온/오프라인 판매처",
     SUM(CASE WHEN JQ2_6 = 0 THEN 1 ELSE 0 END) AS "책, 잡지,기사",
     SUM(CASE WHEN JQ2_7 = 0 THEN 1 ELSE 0 END) AS "기타"
-FROM 해외한류
+FROM "해외한류"
 WHERE SQ1a = 1 OR SQ1a = 13;
 """
 
 df_fashion = run_query(query_fashion)
 df_beauty = run_query(query_beauty)
 
-# 원형 그래프 데이터프레임 변환 (구조 재구현)
+# 데이터프레임 구조 변환
 df_fashion_melted = df_fashion.melt(var_name="접근경로", value_name="빈도수")
 df_beauty_melted = df_beauty.melt(var_name="접근경로", value_name="빈도수")
 
-# 2개의 원형 그래프를 가로로 나란히 배치하기 위한 레이아웃 생성
+
+# 2. [패션 그래프] 상위 3개 색상 추출 및 맵 생성
+df_fashion_sorted = df_fashion_melted.sort_values(by="빈도수", ascending=False)
+pastel_colors = ['#ffb3ba', '#bffcc6', '#ffdfba']  # 상위 3개용 부드러운 파스텔 핑크, 초록, 주황
+fashion_color_map = {}
+
+for i, (idx, row) in enumerate(df_fashion_sorted.iterrows()):
+    path_name = row['접근경로']
+    if i < 3:
+        fashion_color_map[path_name] = pastel_colors[i]
+    else:
+        fashion_color_map[path_name] = '#e5e5e5'  # 나머지는 연한 회색
+
+
+# 3. [뷰티 그래프] 상위 3개 색상 추출 및 맵 생성
+df_beauty_sorted = df_beauty_melted.sort_values(by="빈도수", ascending=False)
+beauty_color_map = {}
+
+for i, (idx, row) in enumerate(df_beauty_sorted.iterrows()):
+    path_name = row['접근경로']
+    if i < 3:
+        beauty_color_map[path_name] = pastel_colors[i]
+    else:
+        beauty_color_map[path_name] = '#e5e5e5'  # 나머지는 연한 회색
+
+
+# 4. 레이아웃 생성 및 시각화 출력
 col1, col2 = st.columns(2)
 
 with col1:
@@ -814,17 +840,16 @@ with col1:
         df_fashion_melted, 
         values='빈도수', 
         names='접근경로', 
-        title='👚 한국 패션 콘텐츠 유입 경로',
+        title='👚 한국 패션 콘텐츠 유입 경로 (TOP 3 강조)',
         hole=0.3,
-        color_discrete_sequence=px.colors.qualitative.Pastel # ✨ 은은한 파스텔톤 컬러셋 적용
+        color='접근경로',
+        color_discrete_map=fashion_color_map
     )
-    # ✨ 글씨를 원 밖으로(outside) 빼고, 레이블과 퍼센트를 깔끔하게 표시합니다.
     fig1.update_traces(
         textposition='outside', 
         textinfo='percent+label',
         textfont_size=13
     )
-    # ✨ 그래프가 커지면서 글씨가 잘리지 않도록 여백(margin)을 확보하고 범례(Legend)는 숨깁니다.
     fig1.update_layout(
         title_font_size=18, 
         showlegend=False,
@@ -837,26 +862,25 @@ with col2:
         df_beauty_melted, 
         values='빈도수', 
         names='접근경로', 
-        title='💄 한국 뷰티 콘텐츠 유입 경로',
+        title='💄 한국 뷰티 콘텐츠 유입 경로 (TOP 3 강조)',
         hole=0.3,
-        color_discrete_sequence=px.colors.qualitative.Pastel # ✨ 은은한 파스텔톤 컬러셋 적용
+        color='접근경로',
+        color_discrete_map=beauty_color_map
     )
-    # ✨ 글씨를 원 밖으로(outside) 빼고, 레이블과 퍼센트를 깔끔하게 표시합니다.
     fig2.update_traces(
         textposition='outside', 
         textinfo='percent+label',
         textfont_size=13
     )
-    # ✨ 그래프가 커지면서 글씨가 잘리지 않도록 여백(margin)을 확보하고 범례(Legend)는 숨깁니다.
     fig2.update_layout(
         title_font_size=18, 
         showlegend=False,
         margin=dict(t=50, b=50, l=40, r=40)
     )
     st.plotly_chart(fig2, use_container_width=True)
-# --- 정보 가이드 및 해석 결과 섹션 (기존 디자인 스타일 유지) ---
 
-# 1. 사용한 SQL 안내 박스 (기존 회색/노란색 박스 디자인 응용)
+
+# 5. 안내 및 인사이트 박스 레이아웃
 st.markdown(
     """
     <div style="
@@ -880,7 +904,6 @@ SELECT SUM(CASE WHEN JQ2_1 = 0 THEN 1 ... END) AS "소셜네트워크서비스" 
     unsafe_allow_html=True
 )
 
-# 2. 참고 사항 안내 박스
 st.markdown(
     """
     <div style="
@@ -901,7 +924,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# 3. 결과 및 인사이트 안내 박스 (기존 초록색/파란색 스타일 일치)
 st.markdown(
     """
     <div style="
