@@ -927,7 +927,7 @@ with col2:
     )
     st.plotly_chart(fig2, use_container_width=True)
     
-# 5. 안내 및 인사이트 박스 레이아웃 (디자인 완벽 통일 버전)
+# 5. 안내 및 인사이트 박스 레이아웃 (디자인 및 SQL 하이라이팅 완벽 일치 버전)
 with st.expander("🔍 사용한 SQL 쿼리 보기"):
     st.markdown(
         """
@@ -936,33 +936,31 @@ with st.expander("🔍 사용한 SQL 쿼리 보기"):
             font-size: 16px; 
             font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; 
             line-height: 2.0;
-            background: #ffffff; 
-            padding: 10px 15px; 
-            border-radius: 4px;
+            padding: 10px 15px;
         ">
-            <b>-- 패션 콘텐츠 경로 조회 전체 쿼리</b><br>
-            <span style="font-family: monospace; font-size: 14px; background-color: #f8f9fa; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 10px; border: 1px solid #e9ecef; white-space: pre-wrap; width: 100%;">SELECT 
-    SUM(CASE WHEN IQ2_1 = 0 THEN 1 ELSE 0 END) AS "소셜네트워크서비스",
-    SUM(CASE WHEN IQ2_2 = 0 THEN 1 ELSE 0 END) AS "드라마, 예능, 영화",
-    SUM(CASE WHEN IQ2_3 = 0 THEN 1 ELSE 0 END) AS "자국 패션 쇼, 전시회",
-    SUM(CASE WHEN IQ2_4 = 0 THEN 1 ELSE 0 END) AS "유튜브",
-    SUM(CASE WHEN IQ2_5 = 0 THEN 1 ELSE 0 END) AS "온/오프라인 판매처",
-    SUM(CASE WHEN IQ2_6 = 0 THEN 1 ELSE 0 END) AS "책, 잡지,기사",
-    SUM(CASE WHEN IQ2_7 = 0 THEN 1 ELSE 0 END) AS "기타"
-FROM "해외한류"
-WHERE SQ1a = 1 OR SQ1a = 13;</span><br><br>
-            
-            <b>-- 뷰티 콘텐츠 경로 조회 전체 쿼리</b><br>
-            <span style="font-family: monospace; font-size: 14px; background-color: #f8f9fa; padding: 2px 6px; border-radius: 4px; display: inline-block; border: 1px solid #e9ecef; white-space: pre-wrap; width: 100%;">SELECT 
-    SUM(CASE WHEN JQ2_1 = 0 THEN 1 ELSE 0 END) AS "소셜네트워크서비스",
-    SUM(CASE WHEN JQ2_2 = 0 THEN 1 ELSE 0 END) AS "드라마, 예능, 영화",
-    SUM(CASE WHEN JQ2_3 = 0 THEN 1 ELSE 0 END) AS "자국 뷰티 쇼, 전시회",
-    SUM(CASE WHEN JQ2_4 = 0 THEN 1 ELSE 0 END) AS "유튜브",
-    SUM(CASE WHEN JQ2_5 = 0 THEN 1 ELSE 0 END) AS "온/오프라인 판매처",
-    SUM(CASE WHEN JQ2_6 = 0 THEN 1 ELSE 0 END) AS "책, 잡지,기사",
-    SUM(CASE WHEN JQ2_7 = 0 THEN 1 ELSE 0 END) AS "기타"
-FROM "해외한류"
-WHERE SQ1a = 1 OR SQ1a = 13;</span>
+            <span style="color: #008000; font-weight: bold;">-- 패션 콘텐츠 경로 조회 전체 쿼리</span><br>
+            <span style="color: #0000ff; font-weight: bold;">SELECT</span> <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_1 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"소셜네트워크서비스"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_2 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"드라마, 예능, 영화"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_3 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"자국 패션 쇼, 전시회"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_4 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"유튜브"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_5 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"온/오프라인 판매처"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_6 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"책, 잡지,기사"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> IQ2_7 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"기타"</span> <br>
+            <span style="color: #0000ff; font-weight: bold;">FROM</span> <span style="color: #a31515;">"해외한류"</span> <br>
+            <span style="color: #0000ff; font-weight: bold;">WHERE</span> SQ1a = 1 <span style="color: #0000ff; font-weight: bold;">OR</span> SQ1a = 13;<br><br><br>
+
+            <span style="color: #008000; font-weight: bold;">-- 뷰티 콘텐츠 경로 조회 전체 쿼리</span><br>
+            <span style="color: #0000ff; font-weight: bold;">SELECT</span> <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_1 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"소셜네트워크서비스"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_2 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"드라마, 예능, 영화"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_3 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"자국 뷰티 쇼, 전시회"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_4 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"유튜브"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_5 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"온/오프라인 판매처"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_6 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"책, 잡지,기사"</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff00ff; font-weight: bold;">SUM</span>(<span style="color: #0000ff; font-weight: bold;">CASE WHEN</span> JQ2_7 = 0 <span style="color: #0000ff; font-weight: bold;">THEN</span> 1 <span style="color: #0000ff; font-weight: bold;">ELSE</span> 0 <span style="color: #0000ff; font-weight: bold;">END</span>) <span style="color: #0000ff; font-weight: bold;">AS</span> <span style="color: #a31515;">"기타"</span> <br>
+            <span style="color: #0000ff; font-weight: bold;">FROM</span> <span style="color: #a31515;">"해외한류"</span> <br>
+            <span style="color: #0000ff; font-weight: bold;">WHERE</span> SQ1a = 1 <span style="color: #0000ff; font-weight: bold;">OR</span> SQ1a = 13;
         </div>
         """,
         unsafe_allow_html=True
@@ -981,7 +979,7 @@ st.markdown(
         <span style="font-weight: bold; font-size: 1.3em; color: #b06000;">💡 참고 사항</span><br>
         <div style="color: #212529; line-height: 2.0; font-size: 16px; margin-top: 8px;">
             • 본 분석에 활용된 데이터는 해외 거주자 중 한국 한류 콘텐츠 이용자를 필터링한 <b>'해외한류'</b> 테이블의 원시자료입니다.<br>
-            • 문항 응답 코드 중 거주국가 식별자 <b>SQ1a 변수의 값이 1 또는 13</b>에 해당하는 특정 주요 전략 권역군을 집해 대상으로 가공하였습니다.
+            • 문항 응답 코드 중 거주국가 식별자 <b>SQ1a 변수의 값이 1 또는 13</b>에 해당하는 특정 주요 전략 권역군을 집계 대상으로 가공하였습니다.
         </div>
     </div>
     """,
