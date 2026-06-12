@@ -838,6 +838,9 @@ col1, col2 = st.columns(2)
 # 4. 레이아웃 생성 및 시각화 출력
 col1, col2 = st.columns(2)
 
+# 4. 레이아웃 생성 및 시각화 출력
+col1, col2 = st.columns(2)
+
 with col1:
     fig1 = px.pie(
         df_fashion_melted, 
@@ -848,17 +851,32 @@ with col1:
         color='접근경로',
         color_discrete_map=fashion_color_map
     )
+    
+    # ✨ 데이터 순서대로 글씨 색상과 크기를 다르게 지정하기 위한 리스트 생성
+    fashion_text_colors = []
+    fashion_text_sizes = []
+    for path in df_fashion_melted['접근경로']:
+        # 만약 회색(#e5e5e5)이 아니면 상위 3개이므로 그래프 조각과 같은 진한 파스텔톤 컬러 배치
+        if fashion_color_map[path] != '#e5e5e5':
+            fashion_text_colors.append(fashion_color_map[path]) 
+            fashion_text_sizes.append(15)  # 🔥 강조 파트는 글씨 크기 15로 확대
+        else:
+            fashion_text_colors.append('#555555') # 회색 파트는 진한 회색 글씨
+            fashion_text_sizes.append(12)  # 일반 파트는 글씨 크기 12 유지
+
     fig1.update_traces(
         textposition='outside', 
         textinfo='percent+label',
-        textfont_size=13,
-        # ✨ 핵심: 조각 사이에 두께 1.5짜리 흰색(#ffffff) 테두리 선을 넣어 구분감을 줍니다!
+        textfont=dict(
+            color=fashion_text_colors, # ✨ 상위 3개 글씨에 개별 색상 부여
+            size=fashion_text_sizes     # ✨ 상위 3개 글씨 크기 확대
+        ),
         marker=dict(line=dict(color='#ffffff', width=1.5))
     )
     fig1.update_layout(
         title_font_size=18, 
         showlegend=False,
-        margin=dict(t=50, b=50, l=40, r=40) 
+        margin=dict(t=50, b=50, l=60, r=60) # 글씨가 커졌으므로 좌우 여백을 조금 더 확보
     )
     st.plotly_chart(fig1, use_container_width=True)
 
@@ -872,17 +890,31 @@ with col2:
         color='접근경로',
         color_discrete_map=beauty_color_map
     )
+    
+    # ✨ 뷰티 그래프용 글씨 색상 및 크기 동적 리스트 생성
+    beauty_text_colors = []
+    beauty_text_sizes = []
+    for path in df_beauty_melted['접근경로']:
+        if beauty_color_map[path] != '#e5e5e5':
+            beauty_text_colors.append(beauty_color_map[path])
+            beauty_text_sizes.append(15)  # 🔥 강조 파트는 글씨 크기 15로 확대
+        else:
+            beauty_text_colors.append('#555555')
+            beauty_text_sizes.append(12)
+
     fig2.update_traces(
         textposition='outside', 
         textinfo='percent+label',
-        textfont_size=13,
-        # ✨ 핵심: 조각 사이에 두께 1.5짜리 흰색(#ffffff) 테두리 선을 넣어 구분감을 줍니다!
+        textfont=dict(
+            color=beauty_text_colors, # ✨ 상위 3개 글씨에 개별 색상 부여
+            size=beauty_text_sizes     # ✨ 상위 3개 글씨 크기 확대
+        ),
         marker=dict(line=dict(color='#ffffff', width=1.5))
     )
     fig2.update_layout(
         title_font_size=18, 
         showlegend=False,
-        margin=dict(t=50, b=50, l=40, r=40)
+        margin=dict(t=50, b=50, l=60, r=60) # 좌우 여백 확보
     )
     st.plotly_chart(fig2, use_container_width=True)
 
